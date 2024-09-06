@@ -20,7 +20,7 @@ const AuthForm = () => {
 
     useEffect(() => {
         if (userInfo) {
-            navigate('/profile')
+            navigate('/')
         }
     }, [navigate, userInfo])
 
@@ -33,6 +33,10 @@ const AuthForm = () => {
             password: inputValues.password,
             expiresInMins: 120
         } as any;
+
+        if (!inputValues.username && !inputValues.password) {
+            return alert("Please fill all details")
+        }
 
         dispatch(loginUser(payLoad));
 
